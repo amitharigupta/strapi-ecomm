@@ -3,6 +3,7 @@ import Wrapper from "@/components/Wrapper";
 import ProductCard from "@/components/ProductCard";
 import { useEffect, useState } from "react";
 import { fetchDataFromApi } from "@/utils/api";
+import NewsLetter from "@/components/NewsLetter/NewsLetter";
 
 export default function Home({ products }) {
 
@@ -19,40 +20,41 @@ export default function Home({ products }) {
 
   return (
     <>
-     <main>
-      <HeroBanner />
-      {/* {products?.[0]?.attributes?.name} */}
-      <Wrapper>
-        <div className="text-center max-w-[800px] mx-auto my-[50px] md:my-[80px]">
-          <div>
-            Heading
+      <main>
+        <HeroBanner />
+        {/* {products?.[0]?.attributes?.name} */}
+        <Wrapper>
+          <div className="text-center max-w-[800px] mx-auto my-[50px] md:my-[80px]">
+            <div>
+              Heading
+            </div>
+            <div>
+              Paragraph
+            </div>
           </div>
-          <div>
-            Paragraph
-          </div>
-        </div>
-      </Wrapper>
-      <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-5 my-14 ml-16 mr-16 px-5 md:px-0">
+        </Wrapper>
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-5 my-14 ml-16 mr-16 px-5 md:px-0">
 
-        {
-          products?.data?.map((product) => {
-            return <ProductCard key={product?.id} data={product} />
-          })
-        }
-        {/* <ProductCard />
+          {
+            products?.data?.map((product) => {
+              return <ProductCard key={product?.id} data={product} />
+            })
+          }
+          {/* <ProductCard />
         <ProductCard />
         <ProductCard />
         <ProductCard />
         <ProductCard />
         <ProductCard /> */}
-      </div>
-     </main>
+        </div>
+        <NewsLetter />
+      </main>
     </>
   )
 }
 
 
-export async function getStaticProps () {
+export async function getStaticProps() {
   const products = await fetchDataFromApi('/api/products?populate=*');
 
   return {
