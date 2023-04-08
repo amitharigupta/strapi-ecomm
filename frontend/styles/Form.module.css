@@ -1,0 +1,9 @@
+.input-group {
+    @apply flex border rounded-xl;
+    position: relative;
+}
+
+.input-text {
+    @apply w-full py-4 px-6 border rounded-xl bg-slate-50;
+    @apply outline-none border-none;
+}
