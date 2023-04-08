@@ -36,3 +36,8 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+Google Credentails
+
+Client Id : 328242547253-vvabvl3epg2hjvbklstbti5amtvgcgfl.apps.googleusercontent.com
+Client Secret : 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

@@ -11,13 +11,16 @@ import { VscChromeClose } from "react-icons/vsc";
 import { fetchDataFromApi } from "@/utils/api";
 import { useSelector } from "react-redux";
 
+import { useSession } from "next-auth/react";
+
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [showCatMenu, setShowCatMenu] = useState(false);
   const [show, setShow] = useState("translate-y-0");
   const [lastScrollY, setLastScrollY] = useState(0);
   const [categories, setCategories] = useState([]);
-
+  const { data: session } = useSession();
+  console.log('Email Session : ', session);
   const { cartItems } = useSelector((state) => {
     return state.cart;
   });
@@ -96,6 +99,7 @@ const Header = () => {
           </Link>
 
           {
+            session?.user?.name && session?.user?.email ? <></> :
             <>
               <Link href={"/user/login"}>
                 <div className="w-8 md:w-12 h-8 md:h12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
