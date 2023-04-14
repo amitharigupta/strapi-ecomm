@@ -25,13 +25,13 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <SessionProvider session={pageProps.session}>
+      {/* <SessionProvider session={pageProps.session}> */}
         <Provider store={store}>
           <Header />
           <Component {...pageProps} />
           <Footer />
         </Provider>
-      </SessionProvider>
+      {/* </SessionProvider> */}
 
     </>
   )

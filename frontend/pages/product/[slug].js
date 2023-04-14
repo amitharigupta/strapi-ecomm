@@ -14,6 +14,7 @@ import "react-toastify/dist/ReactToastify.css"
 
 const ProductDetails = ({ product, products }) => {
   const [selectedSize, setSelectedSize] = useState("");
+  const [selectedColour, setSelectedColour] = useState("");
   const [ showError, setShowError] = useState(false); 
 
   const dispatch = useDispatch()
@@ -95,6 +96,40 @@ const ProductDetails = ({ product, products }) => {
 
               { showError && <div className="text-red-600 mt-1">
                 Size selection is required
+              </div>}
+            </div>
+
+            <div className="mb-10">
+              <div className="flex justify-between mb-2">
+                <div className="text-md font-semibold">Select Colour</div>
+                {/* <div className="text-md font-medium text-black/[0.5]">
+                  Select 
+                </div> */}
+              </div>
+
+              <div id="sizesGrid" className="grid grid-cols-3 gap-2">
+                {p?.colour?.data?.map((item, i) => {
+                  return (
+                    <div
+                      key={i}
+                      className={`border rounded-md text-center py-3 font-medium ${
+                        item.enabled
+                          ? "hover:border-black cursor-pointer"
+                          : " cursor-not-allowed bg-black/[0.1] opacity-50"
+                      } ${selectedColour === item.colour ? "border-black" : "" }`}
+                      onClick={() => {
+                        setSelectedColour(item.colour)
+                        setShowError(false)
+                      }}
+                    >
+                      {item.colour}
+                    </div>
+                  );
+                })}
+              </div>
+
+              { showError && <div className="text-red-600 mt-1">
+                Colour selection is required
               </div>}
             </div>
 

@@ -16,6 +16,7 @@
     "@strapi/provider-upload-cloudinary": "^4.9.0",
     "@strapi/strapi": "4.9.0",
     "dotenv": "^16.0.3",
+    "nodemailer": "^6.9.1",
     "pg": "8.8.0",
     "stripe": "^11.17.0"
   },
