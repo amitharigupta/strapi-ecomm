@@ -5,8 +5,8 @@ import Head from "next/head";
 import store from "@/store/store";
 import { Provider } from "react-redux";
 import { SessionProvider } from "next-auth/react";
-
-export default function App({ Component, pageProps }) {
+ 
+export default function App({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <>
       <Head>
@@ -25,13 +25,13 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      {/* <SessionProvider session={pageProps.session}> */}
+      <SessionProvider session={session}>
         <Provider store={store}>
           <Header />
           <Component {...pageProps} />
           <Footer />
         </Provider>
-      {/* </SessionProvider> */}
+      </SessionProvider>
 
     </>
   )

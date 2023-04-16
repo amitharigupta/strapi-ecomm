@@ -16,10 +16,13 @@ import { useSession } from "next-auth/react";
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [showCatMenu, setShowCatMenu] = useState(false);
+  const [showUserMenu, setShowUserMenu] = useState(false);
   const [show, setShow] = useState("translate-y-0");
   const [lastScrollY, setLastScrollY] = useState(0);
   const [categories, setCategories] = useState([]);
-  // const { data: session } = useSession();
+  const { data: session } = useSession();
+
+  console.log("session : ", session);
   const { cartItems } = useSelector((state) => {
     return state.cart;
   });
@@ -98,14 +101,30 @@ const Header = () => {
           </Link>
 
           {
-            // session?.user?.name && session?.user?.email ? <></> :
-            <>
-              <Link href={"/user/login"}>
-                <div className="w-8 md:w-12 h-8 md:h12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
-                  <BiLogIn className="text-[24px] md:text-[25px]" />
-                </div>
-              </Link>
-            </>
+            session?.user?.name && session?.user?.email ? <>
+              <div className="w-8 font-medium text-[20px] md:w-12 h-8 md:h12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative" onMouseEnter={() => setShowUserMenu(true)} onMouseLeave={() => setShowUserMenu(false)}>
+                {(session.user.name).split(" ")[0][0]}{(session.user.name).split(" ")[1][0]}
+                {
+                  showUserMenu &&
+                  <li className="cursor-pointer flex items-center gap-2 relative">
+                    <ul className="bg-white absolute top-4 right-0 min-w-[250px] px-1 py-1 text-black shadow-lg">
+                      <Link href={`/user/profile`}>
+                        <li className="h-12 flex justify-between items-center px-3 :hover-bg-black/[0.03] rounded-md ">
+                          <span className="opacity-50 text-sm">Profile</span>
+                        </li>
+                      </Link>
+                    </ul>
+                  </li>
+                }
+              </div>
+            </> :
+              <>
+                <Link href={"/user/login"}>
+                  <div className="w-8 md:w-12 h-8 md:h12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
+                    <BiLogIn className="text-[24px] md:text-[25px]" />
+                  </div>
+                </Link>
+              </>
           }
 
           <div className="w-8 md:w-12 h-8 md:h12 rounded-full flex md:hidden justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">

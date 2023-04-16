@@ -144,7 +144,7 @@ const ProductDetails = ({ product, products }) => {
                 dispatch(addToCart({
                   ...product?.data?.[0],
                   selectedSize,
-                  oneQuantiyPrice: p.price
+                  oneQuantityPrice: p.price
                 }))
                 notify()
               }

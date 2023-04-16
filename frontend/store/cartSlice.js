@@ -20,9 +20,12 @@ export const cartSlice = createSlice({
         updateCart: (state, action) => {
             // console.log(state.cartItems);
             state.cartItems = state.cartItems.map((p) => {
-                // console.log('Product from cart Items : ', p);
+                console.log('Product from cart Items : ', p, action.payload.id);
                 if(p.id === action.payload.id) {
+                    console.log(p.id === action.payload.id);
                     if(action.payload.key === "quantity") {
+                        console.log('action.payload.val : ', action.payload.val);
+                        console.log('p.oneQuantityPrice : ', p.oneQuantityPrice);
                         p.attributes.price = +p.oneQuantityPrice * +action.payload.val
                     }
                     return { ...p, [action.payload.key] : action.payload.val }

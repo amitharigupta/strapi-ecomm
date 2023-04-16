@@ -11,6 +11,10 @@ const login = () => {
     signIn('google', { callbackUrl: "https://orange-psychiatrist-sijty.ineuron.app:3000" })
   }
 
+  async function handleGithubSignin () {
+    signIn('github', { callbackUrl: "https://orange-psychiatrist-sijty.ineuron.app:3000"  })
+  }
+
   return (
     <div className="flex h-screen bg-blue-400">
       <div className="mx-auto mt-10 bg-slate-50 rounded-md w-3/5 h-3/4 grid lg:grid-cols-2">
@@ -42,7 +46,7 @@ const login = () => {
                   <button type="button" onClick={handleGoogleSignin} className="button_custom">Sign in with Google <Image src={`/assets/img/google.svg`} width={"20"} height={"20"} /></button>
                 </div>
                 <div className="input-button">
-                  <button type="button" className="button_custom">Sign in with Github <Image src={`/assets/img/github.svg`} width={"25"} height={"25"} /></button>
+                  <button type="button" onClick={handleGithubSignin} className="button_custom">Sign in with Github <Image src={`/assets/img/github.svg`} width={"25"} height={"25"} /></button>
                 </div>
               </form>
 
