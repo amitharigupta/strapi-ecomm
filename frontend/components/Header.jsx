@@ -22,7 +22,7 @@ const Header = () => {
   const [categories, setCategories] = useState([]);
   const { data: session } = useSession();
 
-  console.log("session : ", session);
+  // console.log("session : ", session);
   const { cartItems } = useSelector((state) => {
     return state.cart;
   });
@@ -39,6 +39,15 @@ const Header = () => {
     }
     setLastScrollY(window.scrollY);
   };
+
+  function logoutHandler () {
+    try {
+      localStorage.removeItem("token");
+      localStorage.removeItem("userLoginDetails");
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
     window.addEventListener("scroll", controlNavbar);
@@ -113,6 +122,14 @@ const Header = () => {
                           <span className="opacity-50 text-sm">Profile</span>
                         </li>
                       </Link>
+                      <Link href={`/user/order`}>
+                        <li className="h-12 flex justify-between items-center px-3 :hover-bg-black/[0.03] rounded-md">
+                          <span className="opacity-50 text-sm">My Orders</span>
+                        </li>
+                      </Link>
+                      <li className="h-12 flex justify-between items-center px-3 :hover-bg-black/[0.03] rounded-md" onClick={logoutHandler}>
+                        <span className="opacity-50 text-sm">Logout</span>
+                      </li>
                     </ul>
                   </li>
                 }

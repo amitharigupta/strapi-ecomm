@@ -5,6 +5,8 @@ import Head from "next/head";
 import store from "@/store/store";
 import { Provider } from "react-redux";
 import { SessionProvider } from "next-auth/react";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
  
 export default function App({ Component, pageProps: { session, ...pageProps } }) {
   return (
@@ -27,6 +29,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
       </Head>
       <SessionProvider session={session}>
         <Provider store={store}>
+          <ToastContainer />
           <Header />
           <Component {...pageProps} />
           <Footer />

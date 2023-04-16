@@ -38,3 +38,15 @@ export const makePaymentRequest = async (endpoint, payload) => {
   
   return data;
 };
+
+export const makePostRequest = async (endpoint, payload) => {
+  const data = await axios.post(`${API_URL}${endpoint}`, payload, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${STRAPI_API_TOKEN}`,
+    }
+  });
+  
+  return data;
+}
